@@ -1,4 +1,27 @@
+import 'package:amit/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
+
+Widget defaultButton({
+  required String text,
+  required VoidCallback onTap,
+}) {
+  return ElevatedButton(
+      onPressed: onTap,
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white, fontSize: 18, ),
+      ),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(mainColor),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: mainColor),
+              ))));
+}
+
+
 
 
 Widget defaultFormField({
@@ -43,11 +66,11 @@ Widget defaultFormField({
       prefixIcon: Icon(
 
         prefix,
-          color: Colors.grey,
+        color: Colors.grey,
       ),
       suffixIcon: suffix != null
           ? IconButton(
-          color: Colors.grey,
+        color: Colors.grey,
         onPressed: () => suffixPressed,
         icon: Icon(
 
@@ -57,3 +80,25 @@ Widget defaultFormField({
           : null,
     ),);
 }
+
+
+void navigateTo(context, widget) => Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => widget,
+  ),
+);
+
+void navigateFinish(
+    context,
+    widget,
+    ) =>
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+          (route) {
+        return false;
+      },
+    );

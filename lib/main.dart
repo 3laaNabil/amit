@@ -1,4 +1,4 @@
-import 'package:amit/loginScreen.dart';
+import 'package:amit/modules/login/loginScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
