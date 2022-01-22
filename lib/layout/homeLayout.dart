@@ -11,23 +11,32 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  int currentIndex = 0;
 
-  List<Widget> screens = [
+  int  currentIndex= 0 ;
+  List<Widget> screens = <Widget> [
 
- ProductScreen(),
-    CategoriesScreen()
+ const ProductScreen(),
+     CategoriesScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
+
+    void _onItemTapped(int index) {
+
+      currentIndex = index;
+      setState(() {
+
+      });
+    }
     return Scaffold(
 
-
+body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: mainColor,
         unselectedItemColor: Colors.grey,
         currentIndex: currentIndex,
+        onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -50,3 +59,5 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 }
+
+
